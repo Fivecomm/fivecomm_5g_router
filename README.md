@@ -11,6 +11,10 @@ cd ~/catkin_ws
 catkin_make or catkin build
 source devel/setup.bash
 ```
+Before launching the package the following libraries must be installed:
+```
+pip install pexpect
+```
 Finally the package is ready and can be launched as:
 ```
 roslaunch fivecomm_5g_router fivecomm_5g_router.launch freq:=1
