@@ -1,4 +1,4 @@
-# Fivecomm modem package for ROS
+# Fivecomm 5G router package for ROS
 
 The package must be cloned into the src folder of the ROS workspace
 ```
