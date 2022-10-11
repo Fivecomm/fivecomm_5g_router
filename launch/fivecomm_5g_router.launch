@@ -1,0 +1,14 @@
+<launch>
+    <!-- Args -->
+    <arg name="gateway" default="192.168.2.1"/>
+    <arg name="username" default="root"/>
+    <arg name="password" default="fivecomm"/>
+    <arg name="freq" default="1"/>
+    <!-- Params -->
+    <param name="modemGateway" value="$(arg gateway)" />
+    <param name="modemUsername" value="$(arg username)" />
+    <param name="modemPassword" value="$(arg password)" /> 
+    <param name="pubFreq" value="$(arg freq)" />    
+    <!-- Launch nodes -->
+    <node pkg="fivecomm_5g_router" name="fivecomm_5g_router" type="modemInfo.py" output="screen"/>
+</launch>
