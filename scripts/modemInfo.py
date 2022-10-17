@@ -59,11 +59,13 @@ def getDataFromModem():
     global tech, tech2, mcc, mnc, cellid, rsrq5gnsa, sinr5gnsa, band5gnsa, rsrp4g, rsrq4g, rssi4g
     global sinr4g, pcid, band4g, rsrp5g, rsrq5g, sinr5g, band5g, rscp3g, ecio3g, psc3g, band3g
     s = pxssh.pxssh()
-    if not s.login(modem_gateway, modem_username, modem_password):
+    try:
+        s.login(modem_gateway, modem_username, modem_password)
+    except:
         print("SSH session failed on login")
-        print(str(s))
     else:
         print("SSH session login successful")
+        th_2.start()
         while 0==0:
             s.sendline("varres=$(echo 'AT+QENG=\"servingcell\"'"
                         " | socat - /dev/ttyUSB2,crnl)")
@@ -267,4 +269,3 @@ if __name__ == '__main__':
     th_1 = threading.Thread(target = getDataFromModem)
     th_2 = threading.Thread(target = publishData)
     th_1.start()
-    th_2.start()
